@@ -1,0 +1,50 @@
+name: Run ETL Process
+
+on:
+  schedule:
+    # Running the ETL Process at 3:33 AM every day
+    - cron: '33 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  run_etl:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Cache Python dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('imdb250_etl/imdb250_etl_requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
+    - name: Install dependencies for ETL
+      run: |
+        cd imdb250_etl
+        python -m pip install --upgrade pip
+        pip install -r imdb250_etl_requirements.txt
+        python -m nltk.downloader stopwords
+
+    - name: Run ETL Script
+      run: |
+        cd imdb250_etl
+        python imdb250_etl_script.py  # Running the ETL script to fetch and process data
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "domingosdeeulariadumba"
+        git config --global user.email "domingosdeeulariadumba@gmail.com"
+        git add .
+        git commit -m "Update ETL output"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
