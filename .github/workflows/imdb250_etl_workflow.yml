@@ -43,7 +43,7 @@ jobs:
       run: |
         git config --global user.name "domingosdeeulariadumba"
         git config --global user.email "domingosdeeulariadumba@gmail.com"
-        git add .
+        git add imdb250_deployment/
         git commit -m "Update ETL output"
         git push
       env:
