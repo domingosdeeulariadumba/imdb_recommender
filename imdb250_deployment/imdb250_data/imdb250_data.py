@@ -26,7 +26,7 @@ r = redis.StrictRedis(
 
 # Creating a class for retrieving data for deployment
 class Imdb250Data:
-    def compute_cached_data(self, data_items):
+    def compute_cached_data(self, data_items: list[tuple]) -> pd.DataFrame:
         
         value, key = data_items
         
@@ -37,7 +37,7 @@ class Imdb250Data:
         return cached_data
 
     
-    def get_cached_data(self, data_items):
+    def get_cached_data(self, data_items: list) -> pd.DataFrame:
         
         value, key = data_items
         cached_data = r.get(key)
@@ -47,17 +47,17 @@ class Imdb250Data:
                 return self.compute_cached_data(data_items)
 
     # Method for fetching the IMDb 250 in a dataframe
-    def imdb250(self):
+    def imdb250(self) -> pd.DataFrame:
         return self.get_cached_data(imdb250_data_items[0])
     
     
     # Method for getting dataframe with similarity scores
-    def imdb_250_similarities(self):
+    def imdb_250_similarities(self) -> pd.DataFrame:
         return self.get_cached_data(imdb250_data_items[1])
         
                
     # Method for getting recommendations based on user preference
-    def get_recommendations(self, user_preferences):
+    def get_recommendations(self, user_preferences: list) -> list:
         similarities_df = self.imdb_250_similarities()
 
         cross_df = similarities_df.reindex(similarities_df.columns)
