@@ -67,7 +67,7 @@ class Imdb250Data:
                                        ).sort_values(ascending = False)
         series_not_in_preferences = preferences_series[~(preferences_series.index.isin(user_preferences))]
         not_duplicated_series = series_not_in_preferences[~(series_not_in_preferences.index.duplicated())] 
-        filtered_df = filtered_series.to_frame('score')
+        filtered_df = not_duplicated_series.to_frame('score')
         top_recommendations = filtered_df.query('score  >= .55')
         if len(top_recommendations) >= 5:
             return list(top_recommendations.index[:5])
