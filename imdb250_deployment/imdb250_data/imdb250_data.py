@@ -59,8 +59,7 @@ class Imdb250Data:
         
                
     # Method for getting recommendations based on user preference
-    def get_recommendations(self, user_preferences, 
-                            recommendations_data = imdb250_data_items[1][0]):
+    def get_recommendations(self, user_preferences):
         similarities_df = self.imdb_250_similarities()
 
         cross_df = similarities_df.reindex(similarities_df.columns)
