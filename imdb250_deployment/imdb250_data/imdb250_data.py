@@ -4,7 +4,6 @@ import redis
 import pandas as pd
 import json
 import os
-from requests.auth import HTTPBasicAuth
 from urllib.parse import urlparse
 
 
