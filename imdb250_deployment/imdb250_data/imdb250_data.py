@@ -3,7 +3,6 @@ import joblib as jbl
 import redis
 import pandas as pd
 import json
-import os
 from urllib.parse import urlparse
 
 
@@ -26,7 +25,6 @@ r = redis.StrictRedis(
 
 
 # Creating a class for retrieving data for deployment
-
 class Imdb250Data:
     def compute_cached_data(self, data_items):
         
@@ -68,7 +66,7 @@ class Imdb250Data:
                                         for preference in user_preferences]
                                        )
         ordered_series = preferences_series.sort_values(
-            ascending=False).to_frame('score')
+            ascending = False).to_frame('score')
         filtered_series = ordered_series[
             ~(ordered_series.index.isin(user_preferences))]
         top_recommendations = filtered_series.query('score  >= .55')
