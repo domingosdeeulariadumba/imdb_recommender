@@ -8,11 +8,8 @@ from urllib.parse import urlparse
 
 
 
-# Taking the response of the serialized data
-imdb250_data_zipped_file = 'imdb250_data_zipped.joblib'
-imdb250_token = os.getenv('IMDB250_TOKEN')
-
 # Deserializing the data and passing it as list of value (dataframes) and key (file name)
+imdb250_data_zipped_file = 'imdb250_data_zipped.joblib'
 imdb250_data = jbl.load(imdb250_data_zipped_file)
 imdb250_data_items = list(imdb250_data)  
 
