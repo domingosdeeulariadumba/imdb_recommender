@@ -60,9 +60,7 @@ class Imdb250Data:
     def get_recommendations(self, user_preferences: list[str]) -> list[str]:
         similarities_df = self.imdb_250_similarities()
 
-        cross_df = similarities_df.reindex(similarities_df.columns)
-
-        preferences_series = pd.concat([cross_df[preference]
+        preferences_series = pd.concat([similarities_df[preference]
                                         for preference in user_preferences]
                                        ).sort_values(ascending = False)
         series_not_in_preferences = preferences_series[~(preferences_series.index.isin(user_preferences))]
