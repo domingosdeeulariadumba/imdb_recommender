@@ -251,6 +251,6 @@ with middle.container(border = False):
 
 footer_markdown = '''<div style = 'text-align: center; color: #040404'>
 Developed by <b>Domingos de Eulária Dumba</b>
- © & ℗ 2024.
+ © 2024.
 </div>'''
 st.markdown(footer_markdown, unsafe_allow_html = True)
