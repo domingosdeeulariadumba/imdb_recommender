@@ -16,11 +16,9 @@ imdb250_data_items = list(imdb250_data)
 redis_url = 'redis://red-ct1cs63tq21c73enkkkg:6379'
 parsed_url = urlparse(redis_url)
 r = redis.StrictRedis(
-    host=parsed_url.hostname,
-    port=parsed_url.port,
-    password=None,
-    decode_responses=True,
-    socket_timeout=30
+    host = parsed_url.hostname,
+    port = parsed_url.port,
+    decode_responses = True
 )
 
 
