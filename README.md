@@ -12,21 +12,21 @@ This application utilizes the following technologies:
 
 <img src = 'https://i.postimg.cc/j2xvXyQq/python-logo.png' width = '25' height = '25'/>    **Python**: The core language for developing the application.
 
-<img src = 'https://i.postimg.cc/BnrgzrcV/streamlit-logo.png' width = '25' height = '25'/>    **Streamlit**: For building and deploying the interactive user interface.
+<img src = 'https://i.postimg.cc/BnrgzrcV/streamlit-logo.png' width = '25' height = '25'/>    **Streamlit**: For building and the interactive user interface of the web application.
 
- <img src = 'https://i.postimg.cc/Hn6zPjBw/redis-logo.png' width = '25' height = '25'/>    **Redis**: Used for caching the IMDb 250 data and the similarity matrix to improve performance.
+ <img src = 'https://i.postimg.cc/Hn6zPjBw/redis-logo.png' width = '25' height = '25'/>    **Redis**: Used for caching the IMDb 250 data and the to improve performance.
  
-<img src = 'https://i.postimg.cc/5tfjLz02/joblib-icon.png' width = '25' height = '25'/>    **Joblib**: For serializing and deserializing large data (e.g., IMDb 250 dataset).
+<img src = 'https://i.postimg.cc/5tfjLz02/joblib-icon.png' width = '25' height = '25'/>    **Joblib**: For serializing and deserializing the ETL data.
 
 <img src = 'https://i.postimg.cc/LXBNLxP0/pandas-logo.png' width = '25' height = '25'/>    **Pandas**: Used for data manipulation and analysis.
 
-<img src = 'https://i.postimg.cc/MKGdfbpd/scikit-learn-logo.png' width = '25' height = '25'/>    **Scikit-learn**: For machine learning and recommendation-related tasks.
+<img src = 'https://i.postimg.cc/MKGdfbpd/scikit-learn-logo.png' width = '25' height = '25'/>    **Scikit-learn**: For Machine Learning (recommendation system).
 
-<img src = 'https://i.postimg.cc/sD0KYQBy/selenium-logo.png' width = '25' height = '25'/>    **Selenium**: For web scraping and automating interactions with web pages (if applicable).
+<img src = 'https://i.postimg.cc/sD0KYQBy/selenium-logo.png' width = '25' height = '25'/>    **Selenium**: For web scraping and automating interactions with the IMDb 250 web page.
 
 <img src = 'https://i.postimg.cc/mgzj8LM9/scipy-logo.png' width = '25' height = '25'/>    **SciPy**: For scientific computations, including similarity measures.
 
-<img src = 'https://i.postimg.cc/CM7cK6SR/render-logo.png' width = '25' height = '25'/>    **Render**: The cloud platform used to deploy the web application. Render simplifies the deployment process without the need for manual server configuration.
+<img src = 'https://i.postimg.cc/CM7cK6SR/render-logo.png' width = '25' height = '25'/>    **Render**: The cloud platform used to deploy the web application.
 
 ## Explore the Web App 🌐🚀
 
