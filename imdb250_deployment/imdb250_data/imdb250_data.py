@@ -4,6 +4,7 @@ import redis
 import pandas as pd
 import json
 from urllib.parse import urlparse
+import os
 
 
 
@@ -13,7 +14,7 @@ imdb250_data = jbl.load(imdb250_data_zipped_file)
 imdb250_data_items = list(imdb250_data)  
 
 # Establishing Redis connection using environment variables (with Render details)
-redis_url = 'redis://red-ct1cs63tq21c73enkkkg:6379'
+redis_url = os.getenv('REDIS_URL')
 parsed_url = urlparse(redis_url)
 r = redis.StrictRedis(
     host = parsed_url.hostname,
@@ -47,13 +48,11 @@ class Imdb250Data:
     # Method for fetching the IMDb 250 in a dataframe
     def imdb250(self) -> pd.DataFrame:
         return self.get_cached_data(imdb250_data_items[0])
-    
-    
+        
     # Method for getting dataframe with similarity scores
     def imdb_250_similarities(self) -> pd.DataFrame:
         return self.get_cached_data(imdb250_data_items[1])
-        
-               
+                       
     # Method for getting recommendations based on user preference
     def get_recommendations(self, user_preferences: list[str]) -> list[str]:
         similarities_df = self.imdb_250_similarities()
