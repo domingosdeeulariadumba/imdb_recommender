@@ -4,7 +4,6 @@ import redis
 import pandas as pd
 import json
 from urllib.parse import urlparse
-import os
 
 
 
@@ -14,7 +13,7 @@ imdb250_data = jbl.load(imdb250_data_zipped_file)
 imdb250_data_items = list(imdb250_data)  
 
 # Establishing Redis connection using environment variables (with Render details)
-redis_url = os.getenv('REDIS_URL')
+redis_url = 'redis://red-ct1cs63tq21c73enkkkg:6379'
 parsed_url = urlparse(redis_url)
 r = redis.StrictRedis(
     host = parsed_url.hostname,
