@@ -68,7 +68,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
         edge_driver = webdriver.Edge(service = service_, 
                                      options = options_)
         waiting = 5 # seconds
-        wait_driver = WebDriverWait(edge_driver, timeout = 5 * 4, 
+        wait_driver = WebDriverWait(edge_driver, timeout = waiting * 4, 
                                     poll_frequency = .3)
     
         # Data location url
