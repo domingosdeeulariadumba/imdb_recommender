@@ -6,7 +6,6 @@ import json
 from urllib.parse import urlparse
 
 
-
 # Deserializing the data and passing it as list of value (dataframes) and key (file name)
 imdb250_data_zipped_file = 'imdb250_data_zipped.joblib'
 imdb250_data = jbl.load(imdb250_data_zipped_file)
@@ -21,8 +20,7 @@ r = redis.StrictRedis(
     decode_responses = True
 )
 
-
-# Creating a class for retrieving data for deployment
+# Creating a class to retrieve data for deployment
 class Imdb250Data:
     def compute_cached_data(self, data_items: list[tuple[pd.DataFrame, str]]) -> pd.DataFrame:
         
@@ -33,7 +31,6 @@ class Imdb250Data:
         cached_data = pd.DataFrame(json.loads(json_data))  
         
         return cached_data
-
     
     def get_cached_data(self, data_items: list[tuple[pd.DataFrame, str]]) -> pd.DataFrame:
         
