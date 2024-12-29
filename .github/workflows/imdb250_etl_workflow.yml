@@ -36,8 +36,10 @@ jobs:
 
     - name: Run ETL Script
       run: |
+        set +e  # Disabling immediate error exit
         cd imdb250_etl
-        python imdb250_etl_script.py  # Running the ETL script to fetch and process data
+        python imdb250_etl_script.py || (echo "ETL process failed, retrying in 15 minutes..."; sleep 900; python imdb250_etl_script.py)
+        set -e  # Re-enabling error exit
 
     - name: Commit and push changes
       run: |
