@@ -1,4 +1,4 @@
-name: Redis Connection Example
+name: Redis URL
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Display Redis URL from secret
+      - name: Displaying Redis URL from secret
         env:
           REDIS_URL: ${{ secrets.REDIS_URL }}
         run: echo "Redis URL:$REDIS_URL"
