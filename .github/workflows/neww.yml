@@ -1,4 +1,4 @@
-name: Redis URL
+name: Get Redis URL
 
 on:
   push:
@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Displaying Redis URL from secret
+      - name: Set Redis URL and run script
         env:
           REDIS_URL: ${{ secrets.REDIS_URL }}
-        run: echo "Redis URL:$REDIS_URL"
+        run: python3 imdb_recommender/imdb250_deployment/imdb250_data/imdb250_data.py
