@@ -3,7 +3,6 @@ import joblib as jbl
 import redis
 import pandas as pd
 import json
-from urllib.parse import urlparse
 import os
 
 
@@ -12,14 +11,9 @@ imdb250_data_zipped_file = 'imdb250_data_zipped.joblib'
 imdb250_data = jbl.load(imdb250_data_zipped_file)
 imdb250_data_items = list(imdb250_data)  
 
-# Establishing Redis connection using environment variables (with Render details)
+# Establishing Redis connection using environment variables
 redis_url = os.getenv('REDIS_URL')
-parsed_url = urlparse(redis_url)
-r = redis.StrictRedis(
-    host = parsed_url.hostname,
-    port = parsed_url.port,
-    decode_responses = True
-)
+r = redis.Redis.from_url(redis_url
 
 # Creating a class to retrieve data for deployment
 class Imdb250Data:
