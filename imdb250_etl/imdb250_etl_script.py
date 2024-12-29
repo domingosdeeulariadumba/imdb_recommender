@@ -25,13 +25,10 @@ from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
-
     ## ETL process for IMDb Top 250 Movies
 
-
 # Extracting data from IMDb Top 250 Movies
-def extract_imdb250_movies() -> pd.DataFrame:
-        
+def extract_imdb250_movies() -> pd.DataFrame:        
         '''
         This functions extracts IMDb Top 250 movie data from the IMDb website
         using Selenium. The extracted data includes titles, release years, 
@@ -40,8 +37,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
         
         Returns:
             pd.DataFrame: a Pandas DataFrame containing the data detailed above.
-        '''  
-    
+        '''      
         # Navigation details setup
         options_ = Options()
         options_.add_argument('--headless')    
@@ -205,12 +201,10 @@ def extract_imdb250_movies() -> pd.DataFrame:
                      })
         
         return imdb250_df
-        
-        
+              
         
 # Getting similarities between IMDb Top 250 Movies 
-def transform_imdb250_movies() -> pd.DataFrame: 
-    
+def transform_imdb250_movies() -> pd.DataFrame:     
     '''
    This is a function that proceeds the extraction step, by using the IMDb Top
    250 movies data to find similarities based on descriptions.
@@ -244,13 +238,11 @@ def transform_imdb250_movies() -> pd.DataFrame:
                                    index = imdb250_df.title,
                                   columns = imdb250_df.title
                                   ).fillna(0).round(2)
-    return similarities_df
-    
+    return similarities_df   
 
     
 # Serializing the extracted data in dataframes    
-def load_imdb250_movies() -> zip: 
-    
+def load_imdb250_movies() -> zip:     
     '''
    This function executes the final step of the ETL process, by loading the 
    data retrieved in the Extraction and Transformation step to a serialized zip
@@ -270,8 +262,6 @@ def load_imdb250_movies() -> zip:
     imdb250_zipped_data_instances = zip([imdb250_df, imdb250_similarities_df], 
                                df_instances)
     jbl.dump(imdb250_zipped_data_instances, imdb250_zipped_data_file)
-   
-
 
 # Triggering the ETL execution  
 load_imdb250_movies()
