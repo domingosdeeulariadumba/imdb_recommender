@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  redis-job:
+  run-python:
     runs-on: ubuntu-latest
 
     steps:
