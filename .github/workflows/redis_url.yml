@@ -16,4 +16,4 @@ jobs:
       - name: Set Redis URL and run script
         env:
           REDIS_URL: ${{ secrets.REDIS_URL }}
-        run: python3 imdb250_deployment/imdb250_data/imdb250_data.py
+        run: echo "Environment variable REDIS_URL is set."
