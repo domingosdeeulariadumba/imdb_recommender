@@ -21,4 +21,4 @@ jobs:
         env:
           REDIS_URL: ${{ secrets.REDIS_URL }}
         run: 
-          echo "Environment variable REDIS_URL, which value is ${{ secrets. REDIS_URL}}, is now set."
+          echo "Environment variable REDIS_URL, which value is ${{ secrets.REDIS_URL}}, is now set."
