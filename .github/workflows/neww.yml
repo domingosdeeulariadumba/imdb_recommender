@@ -13,16 +13,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Display Redis URL from secret
-        run: echo "REDIS_URL: ${{ secrets.REDIS_URL }}"
-
       - name: Connect to Redis
-        run: |
-          REDIS_URL=${{ secrets.REDIS_URL }}
-          parsed_url=$(echo $REDIS_URL | awk -F[/:] '{print $4, $5}')
-          host=$(echo $parsed_url | awk '{print $1}')
-          port=$(echo $parsed_url | awk '{print $2}')
-          
-          echo "Connecting to Redis at $host:$port"
-          
-          redis-cli -h $host -p $port
+        run: redis-cli -h ${{ secrets.REDIS_URL }}
