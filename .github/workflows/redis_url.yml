@@ -1,19 +1,4 @@
-name: Redis Connection Example
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  redis-job:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set Redis URL and run script
-        env:
-          REDIS_URL: ${{ secrets.REDIS_URL }}
-        run: echo "Environment variable REDIS_URL is set."
+name: Set Redis URL and run script
+  env:
+    REDIS_URL: ${{ secrets.REDIS_URL }}
+  run: echo "Environment variable REDIS_URL is set."
