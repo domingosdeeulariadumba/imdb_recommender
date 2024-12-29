@@ -11,24 +11,25 @@ imdb250_data_zipped_file = 'imdb250_data_zipped.joblib'
 imdb250_data = jbl.load(imdb250_data_zipped_file)
 imdb250_data_items = list(imdb250_data)  
 
-# Establishing Redis connection using environment variables
+
+# Establishing Redis connection (instance from Render)
 redis_url = os.getenv('REDIS_URL')
 r = redis.Redis.from_url(redis_url)
 
+
 # Creating a class to retrieve data for deployment
 class Imdb250Data:
-    def compute_cached_data(self, data_items: list[tuple[pd.DataFrame, str]]) -> pd.DataFrame:
-        
-        value, key = data_items
-        
+    
+    # A global method for computing cached data
+    def compute_cached_data(self, data_items: list[tuple[pd.DataFrame, str]]) -> pd.DataFrame:        
+        value, key = data_items        
         json_data = value.to_json()            
         r.set(key, json_data)
-        cached_data = pd.DataFrame(json.loads(json_data))  
-        
+        cached_data = pd.DataFrame(json.loads(json_data))          
         return cached_data
     
-    def get_cached_data(self, data_items: list[tuple[pd.DataFrame, str]]) -> pd.DataFrame:
-        
+    # Global method for getting cached data (or recompute in case it is not longer available)
+    def get_cached_data(self, data_items: list[tuple[pd.DataFrame, str]]) -> pd.DataFrame:        
         value, key = data_items
         cached_data = r.get(key)
         if cached_data:
