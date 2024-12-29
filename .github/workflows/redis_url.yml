@@ -1,7 +1,13 @@
+name: Redis URL
+
+on:
+  push:
+    branches:
+    - main
 jobs:
   get-redis-url:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -10,6 +16,9 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      
+
       - name: Display Redis URL from secret
-        run: echo "REDIS_URL: ${{ secrets.REDIS_URL }}"
+        env:
+          REDIS_URL: ${{ secrets.REDIS_URL }}
+        run: 
+          echo "Environment variable REDIS_URL is set."
