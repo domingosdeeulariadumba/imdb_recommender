@@ -13,7 +13,7 @@ imdb250_data_items = list(imdb250_data)
 
 # Establishing Redis connection using environment variables
 redis_url = os.getenv('REDIS_URL')
-r = redis.Redis.from_url(redis_url
+r = redis.Redis.from_url(redis_url)
 
 # Creating a class to retrieve data for deployment
 class Imdb250Data:
