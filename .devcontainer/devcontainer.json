@@ -1,9 +1,0 @@
-{
-  "name": "imdb_recommender",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "remoteEnv": {
-    "REDIS_URL": "${{ secrets.REDIS_URL }}"
-  }
-}
