@@ -1,6 +1,6 @@
 import os
 def var_():
-  return os.getenv('REDIS_URL')
+  return os.environ['REDIS_URL']
 
 def var__():
   return print('angola')
