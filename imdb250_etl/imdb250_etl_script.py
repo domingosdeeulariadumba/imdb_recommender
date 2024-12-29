@@ -14,11 +14,9 @@ from selenium.common.exceptions import (
 import regex as re
 import time
 import os
-
 # Data Manipulation 
 import pandas as pd
 import joblib as jbl
-
 # Machine Learning
 from scipy.spatial.distance import pdist, squareform
 from nltk.corpus import stopwords
@@ -55,16 +53,12 @@ def extract_imdb250_movies() -> pd.DataFrame:
         # Webdriver settings
         edge_driver_exec = EdgeChromiumDriverManager().install()
         service_ = Service(edge_driver_exec)
-        edge_driver = webdriver.Edge(service = service_, 
-                                     options = options_)
+        edge_driver = webdriver.Edge(service = service_, options = options_)
         waiting = 5 # seconds
-        wait_driver = WebDriverWait(edge_driver, timeout = waiting * 4, 
-                                    poll_frequency = .3)
+        wait_driver = WebDriverWait(edge_driver, timeout = waiting * 4, poll_frequency = .3)
     
-        # Data location url
+        # Getting to the IMDb 250 movies address page
         url = 'https://www.imdb.com/chart/top/'
-    
-        # Getting to the address page
         edge_driver.get(url)
         
         # Declining cookies preferences
@@ -214,6 +208,7 @@ def transform_imdb250_movies() -> pd.DataFrame:
        IMDb Top 250 movies.
    '''
     
+    # Storing the IMDb data
     imdb250_df = extract_imdb250_movies()
     
     # Instantiation of TF-IDF Vectorixer
@@ -226,8 +221,10 @@ def transform_imdb250_movies() -> pd.DataFrame:
     relevant_terms = pd.Series(terms)[~(pd.Series(terms).isin(stopwords_en))].values
     
     # Dataframe with vectorized terms for each movie
-    df_vec = pd.DataFrame(vectorized_terms.toarray(), 
-                 columns = terms, index = imdb250_df.title
+    df_vec = pd.DataFrame(
+        vectorized_terms.toarray(),
+        columns = terms, 
+        index = imdb250_df.title
                  ).loc[:, relevant_terms]
     
     # Getting the dataframe with cosine distances
@@ -241,27 +238,29 @@ def transform_imdb250_movies() -> pd.DataFrame:
     return similarities_df   
 
     
-# Serializing the extracted data in dataframes    
+# Serializing and loading the transformed data    
 def load_imdb250_movies() -> zip:     
     '''
-   This function executes the final step of the ETL process, by loading the 
-   data retrieved in the Extraction and Transformation step to a serialized zip
-   instance storing.
+   This function executes the final stage of the ETL process, by loading the 
+   data retrieved in the Extraction and Transformation steps to a serialized zip
+   instance.
 
    Returns:
        zip: it returns a serialized zip instance storing the extracted
        and tranformed data.
    '''
    
-    imdb250_similarities_df = transform_imdb250_movies()
-    imdb250_df = extract_imdb250_movies()    
-    
-    df_instances = ['imdb250_df', 
-                    'imdb250_similarities_df']
+    # Extraction and transformation
+    imdb250_df = extract_imdb250_movies() 
+    imdb250_similarities_df = transform_imdb250_movies()       
+
+    # Storing the transformded data
+    df_instances = ['imdb250_df', 'imdb250_similarities_df']
     imdb250_zipped_data_file = os.path.abspath(os.path.join(os.getcwd(), '..', 'imdb250_deployment', 'imdb250_data_zipped.joblib'))
-    imdb250_zipped_data_instances = zip([imdb250_df, imdb250_similarities_df], 
-                               df_instances)
+    imdb250_zipped_data_instances = zip(
+        [imdb250_df, imdb250_similarities_df], df_instances
+    )
     jbl.dump(imdb250_zipped_data_instances, imdb250_zipped_data_file)
 
-# Triggering the ETL execution  
+# Triggering the ETL process execution  
 load_imdb250_movies()
