@@ -15,7 +15,7 @@ jobs:
 
       - name: Display Redis URL from secret
         env:
-          REDIS_URL: ${{ secrets.REDIS_URL }}
+          redis_url: ${{ secrets.REDIS_URL }}
         run: 
           echo "Environment variable REDIS_URL is set."
           python print_/print_.py
