@@ -1,0 +1,22 @@
+name: Check Redis URL Secret
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-redis-url:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Set up GitHub CLI
+        uses: actions/setup-gh-cli@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: View Redis URL Secret
+        run: gh secret view REDIS_URL --repo imdb_recommender
