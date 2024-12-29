@@ -1,9 +1,3 @@
-"""
-Created on Fri Nov 15 17:59:00 2024
-
-@author: domingosdeeularia
-"""
-
     ## Dependencies
 
 # Data Extraction and Pattern Matching
