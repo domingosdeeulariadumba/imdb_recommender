@@ -18,7 +18,7 @@ jobs:
 
       - name: Connect to Redis
         run: |
-          REDIS_URL=$(echo ${{ secrets.REDIS_URL }})
+          REDIS_URL=${{ secrets.REDIS_URL }}
           parsed_url=$(echo $REDIS_URL | awk -F[/:] '{print $4, $5}')
           host=$(echo $parsed_url | awk '{print $1}')
           port=$(echo $parsed_url | awk '{print $2}')
