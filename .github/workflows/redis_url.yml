@@ -5,13 +5,21 @@ on:
     branches:
       - main
 
+env:
+  redis_url: ${{ secrets.REDIS_URL }}
+
 jobs:
-  run-python:
+  get-redis-url:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
       - name: Display Redis URL from secret
         env:
