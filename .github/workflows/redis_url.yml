@@ -3,9 +3,6 @@ name: Redis URL
 on:
   workflow_dispatch:
 
-env:
-  REDIS_URL: ${{ secrets.REDIS_URL }}
-
 jobs:
   get-redis-url:
     runs-on: ubuntu-latest
