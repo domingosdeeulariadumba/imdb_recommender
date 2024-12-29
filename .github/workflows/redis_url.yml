@@ -1,9 +1,7 @@
 name: Redis URL
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 env:
   REDIS_URL: ${{ secrets.REDIS_URL }}
