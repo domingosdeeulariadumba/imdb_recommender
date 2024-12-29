@@ -1,1 +1,1 @@
-.from print import var_
+.from print import (var_, var__)
