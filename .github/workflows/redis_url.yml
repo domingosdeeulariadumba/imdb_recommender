@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  redis_url: ${{ secrets.REDIS_URL }}
+  REDIS_URL: ${{ secrets.REDIS_URL }}
 
 jobs:
   get-redis-url:
@@ -23,7 +23,7 @@ jobs:
 
       - name: Display Redis URL from secret
         env:
-          redis_url: ${{ secrets.REDIS_URL }}
+          REDIS_URL: ${{ secrets.REDIS_URL }}
         run: 
           echo "Environment variable REDIS_URL is set."
           python print_/print_.py
