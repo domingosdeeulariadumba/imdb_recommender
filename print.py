@@ -1,2 +1,3 @@
 import os
-var = os.getenv('REDIS_URL')
+def var():
+  return os.getenv('REDIS_URL')
