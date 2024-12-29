@@ -20,5 +20,5 @@ jobs:
 
       - name: View Redis URL Secret
         run: |
-          python -c "import os; os.system('gh auth login --with-token')"
-          python -c "os.system('gh secret view REDIS_URL --repo imdb_recommender')"
+          subprocess.run(['gh', 'auth', 'login', '--with-token'], check=True)
+          subprocess.run(['gh', 'secret', 'view', 'REDIS_URL', '--repo', 'imdb_recommender'], check=True)
