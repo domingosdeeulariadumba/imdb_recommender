@@ -6,7 +6,7 @@ import json
 import os
 
 
-# Deserializing the data and passing it as list of value (dataframes) and key (file name)
+# Deserializing the data and passing it as list of value (dataframes) and key (file name) pairs
 imdb250_data_zipped_file = 'imdb250_data_zipped.joblib'
 imdb250_data = jbl.load(imdb250_data_zipped_file)
 imdb250_data_items = list(imdb250_data)  
@@ -28,7 +28,7 @@ class Imdb250Data:
         cached_data = pd.DataFrame(json.loads(json_data))          
         return cached_data
     
-    # Global method for getting cached data (or recompute in case it is not longer available)
+    # Global method for getting cached data (or recompute in case it is no longer available)
     def get_cached_data(self, data_items: list[tuple[pd.DataFrame, str]]) -> pd.DataFrame:        
         value, key = data_items
         cached_data = r.get(key)
