@@ -2,7 +2,6 @@ name: Run ETL Process
 
 on:
   schedule:
-    # Running the ETL Process at 3:33 AM every day
     - cron: '33 3 * * *'
   workflow_dispatch:
 
