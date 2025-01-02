@@ -239,7 +239,7 @@ def transform_imdb250_movies() -> pd.DataFrame:
 
     
 # Serializing and loading the transformed data    
-def load_imdb250_movies() -> zip:     
+def load_imdb250_movies():     
     '''
    This function executes the final stage of the ETL process, by loading the 
    data retrieved in the Extraction and Transformation steps to a serialized zip
