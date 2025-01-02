@@ -244,10 +244,6 @@ def load_imdb250_movies() -> zip:
    This function executes the final stage of the ETL process, by loading the 
    data retrieved in the Extraction and Transformation steps to a serialized zip
    instance.
-
-   Returns:
-       zip: it returns a serialized zip instance storing the extracted
-       and tranformed data.
    '''
    
     # Extraction and transformation
