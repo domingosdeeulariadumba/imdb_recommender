@@ -37,16 +37,16 @@ class Imdb250Data:
                 return self.compute_cached_data(data_items)
 
     # Method for fetching the IMDb 250 in a dataframe
-    def imdb250(self) -> pd.DataFrame:
+    def imdb250_data(self) -> pd.DataFrame:
         return self.get_cached_data(imdb250_data_items[0])
         
     # Method for getting dataframe with similarity scores
-    def imdb_250_similarities(self) -> pd.DataFrame:
+    def imdb250_similarities(self) -> pd.DataFrame:
         return self.get_cached_data(imdb250_data_items[1])
                        
     # Method for getting recommendations based on user preference
     def get_recommendations(self, user_preferences: list[str]) -> list[str]:
-        similarities_df = self.imdb_250_similarities()
+        similarities_df = self.imdb250_similarities()
 
         preferences_series = pd.concat([similarities_df[preference]
                                         for preference in user_preferences]
