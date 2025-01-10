@@ -46,10 +46,10 @@ jobs:
         for i in {0..4}; do
           python imdb250_etl_script.py
           if [ $? -eq 0 ]; then
-            echo "ETL process executed successfully."
+            echo "ETL process executed successfully!"
             break
           else
-            echo "ETL process failed, retrying in 5 minutes..."
+            echo "ETL process failed!!! Retrying in 5 minutes..."
             sleep 300
           fi
         done
