@@ -16,7 +16,7 @@ st.set_page_config(
 
 # Getting the IMDb 250 data
 imdb250_data = Imdb250Data()
-df_info = imdb250_data.imdb250()
+df_info = imdb250_data.imdb250_data()
 
 
         ### Building rest part of the the Application
