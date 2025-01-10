@@ -1,4 +1,4 @@
-name: Run ETL Process
+name: Execute ETL Pipeline for IMDb250 Data
 
 # Setting the trigger event (daily at 3:33 AM UTC and allowing manual execution)
 on:
