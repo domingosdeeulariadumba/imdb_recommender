@@ -1,5 +1,6 @@
 name: Run ETL Process
 
+# Setting the trigger event (daily at 3:33 AM UTC and allowing manual execution)
 on:
   schedule:
     - cron: '33 3 * * *'
@@ -7,17 +8,21 @@ on:
 
 jobs:
   run_etl:
-    runs-on: ubuntu-latest
-    
+    # Specifying the OS for the runner (the latest version of Ubuntu)
+    runs-on: ubuntu-latest 
+
+    # Cloning the repository (main branch) into the runner
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v3 
 
+    # Setting up Python 3.9 on the runner
     - name: Set up Python 3.9
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v4 
       with:
         python-version: '3.9'
 
+    # Caching Python dependencies to speed up future runs of the workflow
     - name: Cache Python dependencies
       uses: actions/cache@v3
       with:
@@ -25,22 +30,34 @@ jobs:
         key: ${{ runner.os }}-pip-${{ hashFiles('imdb250_etl/imdb250_etl_requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
-
-    - name: Install dependencies for ETL
+    
+    # Installing dependencies for running the ETL process (or caching in case it exists)
+    - name: Install Dependencies for ETL
       run: |
         cd imdb250_etl
         python -m pip install --upgrade pip
         pip install -r imdb250_etl_requirements.txt
         python -m nltk.downloader stopwords
-
-    - name: Run ETL Script
+  
+  # Running the ETL process with five attempts in case it fails
+    - name: Run ETL Process
       run: |
         set +e  # Disabling immediate error exit
         cd imdb250_etl
-        python imdb250_etl_script.py || (echo "ETL process failed, retrying in 15 minutes..."; sleep 900; python imdb250_etl_script.py)
+        for i in {0..4}; do
+          python imdb250_etl_script.py
+          if [ $? -eq 0 ]; then
+            echo "ETL process executed successfully."
+            break
+          else
+            echo "ETL process failed, retrying in 5 minutes..."
+            sleep 300
+          fi
+        done
         set -e  # Re-enabling error exit
-
-    - name: Commit and push changes
+    
+    # Commiting and pushing changes to the repository
+    - name: Commit and Push Changes
       run: |
         git config --global user.name "domingosdeeulariadumba"
         git config --global user.email "domingosdeeulariadumba@gmail.com"
