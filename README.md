@@ -16,7 +16,7 @@ This application utilizes the following technologies:
 
  <img src = 'https://i.postimg.cc/Hn6zPjBw/redis-logo.png' width = '25' height = '25'/>    **Redis**: Used for caching the IMDb 250 data and to improve performance.
  
-<img src = 'https://i.postimg.cc/5tfjLz02/joblib-icon.png' width = '25' height = '25'/>    **Joblib**: For serializing and deserializing the ETL data.
+<img src = 'https://i.postimg.cc/5tfjLz02/joblib-icon.png' width = '25' height = '25'/>    **Joblib**: For serializing and deserializing the ETL DataFrames.
 
 <img src = 'https://i.postimg.cc/CM7cK6SR/render-logo.png' width = '25' height = '25'/>    **Render**: The cloud platform used to deploy the web application.
 
