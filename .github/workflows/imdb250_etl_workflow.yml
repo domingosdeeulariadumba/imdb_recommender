@@ -13,17 +13,17 @@ jobs:
 
     # Cloning the repository (main branch) into the runner
     steps:
-    - name: Checkout code
+    - name: Checkout Code
       uses: actions/checkout@v3 
 
     # Setting up Python 3.9 on the runner
-    - name: Set up Python 3.9
+    - name: Set Up Python 3.9
       uses: actions/setup-python@v4 
       with:
         python-version: '3.9'
 
     # Caching Python dependencies to speed up future runs of the workflow
-    - name: Cache Python dependencies
+    - name: Cache Python Dependencies
       uses: actions/cache@v3
       with:
         path: ~/.cache/pip
