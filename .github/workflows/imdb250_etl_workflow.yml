@@ -41,8 +41,8 @@ jobs:
   # Running the ETL process with five attempts in case it fails
     - name: Run ETL Process
       run: |
-        set +e  # Disabling immediate error exit
         cd imdb250_etl
+        set +e  # Disabling immediate error exit        
         for i in {0..4}; do
           python imdb250_etl_script.py
           if [ $? -eq 0 ]; then
