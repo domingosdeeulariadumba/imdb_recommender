@@ -47,21 +47,14 @@ class Imdb250Data:
     # Method for getting recommendations based on user preference
     def get_recommendations(self, user_preferences: list[str]) -> list[str]:
         similarities_df = self.imdb250_similarities()
-
-        preferences_series = pd.concat([similarities_df[preference]
-                                        for preference in user_preferences]
+        preferences_series = pd.concat(
+             [similarities_df[preference] for preference in user_preferences]
                                        ).sort_values(ascending = False)
-        series_not_in_preferences = preferences_series[~(preferences_series.index.isin(user_preferences))]
-        not_duplicated_series = series_not_in_preferences[~(series_not_in_preferences.index.duplicated())] 
+        not_in_preferences_series = preferences_series[~(preferences_series.index.isin(user_preferences))]
+        not_duplicated_series = not_in_preferences_series[~(not_in_preferences_series.index.duplicated())] 
         filtered_df = not_duplicated_series.to_frame('score')
         top_recommendations = filtered_df.query('score  >= .55')
         if len(top_recommendations) >= 5:
             return list(top_recommendations.index[:5])
         else:
             return list(not_duplicated_series.index[:5])
-
-
-
-
-
-print ('Data loaded and Redis connection established')

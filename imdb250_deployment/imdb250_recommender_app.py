@@ -1,11 +1,11 @@
-## Dependencies
+# Dependencies
 import streamlit as st
 from imdb250_data import Imdb250Data
 
 
-    ## Setting up the page
+# Setting up the page
 
-# title, icon, layout, a
+# Title, icon, and layout
 logo = 'https://i.postimg.cc/Z5dXDfjq/recommender-logo.png'
 st.set_page_config(
     page_title='IMDb Recommender',
@@ -17,9 +17,6 @@ st.set_page_config(
 # Getting the IMDb 250 data
 imdb250_data = Imdb250Data()
 df_info = imdb250_data.imdb250_data()
-
-
-        ### Building rest part of the the Application
 
 
 # Background color
@@ -44,7 +41,7 @@ st.image('https://i.postimg.cc/hPS84SwW/body-image-1.png')
 st.image('https://i.postimg.cc/nrx4DZhm/body-image-2.png')
 
 
-    ## Sidebar configuration
+# Sidebar configuration
 
 # Sidebar customization (buttons and background)
 sidebar_widgets = '''
@@ -100,7 +97,7 @@ with st.sidebar:
                                 unsafe_allow_html = True)
         st.write('')
 
-            ## Body of the page
+# Body of the page
 
 with st.expander('Get Started! ↴'):
     # Select box
@@ -190,7 +187,7 @@ with st.expander('Get Started! ↴'):
                 st.rerun()
 
 
-    ## Links Section
+# Links section
     
 for i in range(4):
     st.write('')
@@ -202,9 +199,7 @@ st.markdown(container_title, unsafe_allow_html=True)
 
 # Icons divider
 github_icon_url = 'https://i.postimg.cc/9FVb4PDk/github-icon.png'
-
 linkedin_icon_url = 'https://i.postimg.cc/W1178266/linkedin-icon.png'
-
 linktree_icon_url = 'https://i.postimg.cc/t4vNmLB0/linktree-icon.png'
 height_ = 35
 
@@ -247,7 +242,7 @@ with middle.container(border = False):
     st.markdown(icons_markdown,
                 unsafe_allow_html = True)
 
-    # Footer section
+# Footer stuff
 
 footer_markdown = '''<div style = 'text-align: center; color: #040404'>
 Developed by <b>Domingos de Eulária Dumba</b>

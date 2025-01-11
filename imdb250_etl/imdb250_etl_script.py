@@ -1,6 +1,6 @@
-    ## Dependencies
+# Dependencies
 
-# Data Extraction and Pattern Matching
+# Data Extraction and Manipulation
 from selenium import webdriver
 from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from selenium.webdriver.edge.options import Options
@@ -14,7 +14,6 @@ from selenium.common.exceptions import (
 import regex as re
 import time
 import os
-# Data Manipulation 
 import pandas as pd
 import joblib as jbl
 # Machine Learning
@@ -23,7 +22,7 @@ from nltk.corpus import stopwords
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
-    ## ETL process for IMDb Top 250 Movies
+# ETL process for IMDb Top 250 Movies
 
 # Extracting data from IMDb Top 250 Movies
 def extract_imdb250_movies() -> pd.DataFrame:        
@@ -83,7 +82,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
         length = [k.split('\n')[2] for k in info] 
         rate = [re.findall(r'\n(\d.\d)\n', k)[0] for k in info]
     
-        # Fetching url posters 
+        ### Fetching url posters 
         posters = [
             edge_driver.find_element(By.XPATH,
                                            f'//*[@id="__next"]/main/div/div[3]/section/div/div[2]/div/ul/li[{i+1}]/div[1]/div/div[2]/img'
@@ -103,7 +102,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
         i = 0
         while i < 250:
             
-            # Expanding movies information section (and ensuring it reads the description text) 
+            #### Expanding movies information section (and ensuring it reads the description text) 
             open_button_path = f'''//*[@id="__next"]/main/div/div[3]/section
                                 /div/div[2]/div/ul/li[{i + 1}]/div[3]/button''' 
             close_button_path = '/html/body/div[4]/div[2]/div/div[1]/button'
@@ -127,7 +126,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
                     )
                     description_text = description_section.text
                     
-                    # Getting directors information
+                    ### Getting directors information
                     dir_element = edge_driver.find_elements(By.XPATH, 
                                                             dir_path)
                     dir_info = [dir.text for dir in dir_element]       
@@ -257,6 +256,7 @@ def load_imdb250_movies():
         [imdb250_df, imdb250_similarities_df], df_instances
     )
     jbl.dump(imdb250_zipped_data_instances, imdb250_zipped_data_file)
+
 
 # Triggering the ETL process execution  
 load_imdb250_movies()
