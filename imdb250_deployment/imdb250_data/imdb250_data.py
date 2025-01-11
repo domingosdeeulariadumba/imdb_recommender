@@ -59,3 +59,9 @@ class Imdb250Data:
             return list(top_recommendations.index[:5])
         else:
             return list(not_duplicated_series.index[:5])
+
+
+
+
+
+print ('Data loaded and Redis connection established')
