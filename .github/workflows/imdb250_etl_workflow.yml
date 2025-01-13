@@ -61,7 +61,7 @@ jobs:
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
         git add imdb250_deployment/
-        git diff --quiet || git commit -m "Update IMDb 250 Data"  # Only commit if there are changes
+        git commit -m "Update IMDb 250 Data"  # Only commit if there are changes
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
