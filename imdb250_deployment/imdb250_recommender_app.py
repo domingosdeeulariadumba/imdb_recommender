@@ -8,9 +8,9 @@ from imdb250_data import Imdb250Data
 # Title, icon, and layout
 logo = 'https://i.postimg.cc/Z5dXDfjq/recommender-logo.png'
 st.set_page_config(
-    page_title='IMDb Recommender',
+    page_title = 'IMDb Recommender',
     page_icon=logo,
-    layout='centered',
+    layout = 'centered',
     initial_sidebar_state = 'collapsed'
 )     
 
@@ -197,14 +197,15 @@ container_title = '''<div style = 'text-align: center; color: #040404'><b>Let's 
 st.markdown(container_title, unsafe_allow_html=True)
 
 
-# Icons divider
+# Connection icons
+kofi_icon_url = 'https://i.postimg.cc/wj3w1mjG/kofi-icon.png'
+linktree_icon_url = 'https://i.postimg.cc/t4vNmLB0/linktree-icon.png'
 github_icon_url = 'https://i.postimg.cc/9FVb4PDk/github-icon.png'
 linkedin_icon_url = 'https://i.postimg.cc/W1178266/linkedin-icon.png'
-linktree_icon_url = 'https://i.postimg.cc/t4vNmLB0/linktree-icon.png'
 height_ = 35
 
 container_style = '''
-background-color: #f3c404;
+background-color: #E1EBEE;
 border-radius: 14px;
 padding: 10px;
 margin: 10px;
@@ -217,6 +218,18 @@ gap: 15px;
 
 icons_markdown = f'''
 <div style = '{container_style}'>
+        </a>
+        <a href = 'https://ko-fi.com/domingosdeeulariadumba' target = '_blank' style = 'text-decoration: none;'>
+            <img src = '{kofi_icon_url}' 
+                 alt = 'Domingos' ko-fi' 
+                 height = '{height_}' width = '{height_}'/>
+        </a>
+        </a>
+        <a href = 'https://linktr.ee/domingosdeeulariadumba' target = '_blank' style = 'text-decoration: none;'>
+            <img src = '{linktree_icon_url}' 
+                 alt = 'Domingos' Linktree' 
+                 height = '{height_}' width = '{height_}'/>
+        </a>
         <a href = 'https://github.com/domingosdeeulariadumba' target = '_blank' style = 'text-decoration: none margin:;'>
             <img src = '{github_icon_url}' 
                  alt = "Domingos' GitHub" 
@@ -227,25 +240,18 @@ icons_markdown = f'''
                  alt = "Domingos' LinkedIn" 
                  height = '{height_}' width = '{height_}' />
         </a>
-        <a href = 'https://linktr.ee/domingosdeeulariadumba' target = '_blank' style = 'text-decoration: none;'>
-            <img src = '{linktree_icon_url}' 
-                 alt = 'Domingos' Linktree' 
-                 height = '{height_}' width = '{height_}'/>
-        </a>
 </div>
 '''
 
-
-# Columns in the layout
+# Centralizing the connection icons
 _, middle, _ = st.columns([0.5, .5, 0.5])
 with middle.container(border = False):
     st.markdown(icons_markdown,
                 unsafe_allow_html = True)
-
+    
 # Footer stuff
-
 footer_markdown = '''<div style = 'text-align: center; color: #040404'>
 Developed by <b>Domingos de Eulária Dumba</b>
- © 2024.
+ © 2025.
 </div>'''
 st.markdown(footer_markdown, unsafe_allow_html = True)
