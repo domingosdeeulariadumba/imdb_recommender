@@ -205,7 +205,7 @@ linkedin_icon_url = 'https://i.postimg.cc/W1178266/linkedin-icon.png'
 height_ = 35
 
 container_style = '''
-background-color: #E1EBEE;
+background-color: #f3c404;
 border-radius: 14px;
 padding: 10px;
 margin: 10px;
