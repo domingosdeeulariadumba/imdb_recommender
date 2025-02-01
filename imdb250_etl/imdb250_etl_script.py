@@ -189,8 +189,8 @@ def extract_imdb250_movies() -> pd.DataFrame:
         imdb250_df = pd.DataFrame({'title': titles, 'plot_': plots, 
                            'release_year': release_year, 'length': length, 
                            'director_s': [' • '.join(dir_s) for dir_s in directors],
-                           'lead_stars': [' • '.join(strs) for strs in lead_stars], 
-                           'rate': rate, 'cover': posters
+                           'lead_stars': [' • '.join(stars) for stars in lead_stars], 
+                           'rate': rate, 'poster': posters
                      })
         
         return imdb250_df
@@ -220,7 +220,7 @@ def transform_imdb250_movies() -> pd.DataFrame:
     relevant_terms = pd.Series(terms)[~(pd.Series(terms).isin(stopwords_en))].values
     
     # Dataframe with vectorized terms for each movie
-    df_vec = pd.DataFrame(
+    vect_terms_df = pd.DataFrame(
         vectorized_terms.toarray(),
         columns = terms, 
         index = imdb250_df.title
@@ -228,7 +228,7 @@ def transform_imdb250_movies() -> pd.DataFrame:
     
     # Getting the dataframe with cosine distances
     terms_matrix = (1 - squareform(
-        pdist(df_vec, metric = 'cosine')
+        pdist(vect_terms_df, metric = 'cosine')
         ))
     similarities_df = pd.DataFrame(terms_matrix,
                                    index = imdb250_df.title,
