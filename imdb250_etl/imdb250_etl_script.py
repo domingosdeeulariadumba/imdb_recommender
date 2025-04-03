@@ -92,8 +92,8 @@ def extract_imdb250_movies() -> pd.DataFrame:
         edge_driver.execute_script(
             'window.scrollTo(0, 410);')
     
-        # Function to perform incremental scrolling ( by 18% of the viewport)
-        def scroll_page():
+        # Function to perform incremental scrolling (by 18% of the viewport)
+        def scroll_page() -> None:
             scroll_step = edge_driver.execute_script("return window.innerHeight") * .18
             edge_driver.execute_script(f'window.scrollBy(0, {scroll_step})')
     
@@ -238,7 +238,7 @@ def transform_imdb250_movies() -> pd.DataFrame:
 
     
 # Serializing and loading the transformed data    
-def load_imdb250_movies():     
+def load_imdb250_movies() -> None:     
     '''
    This function executes the final stage of the ETL process, by loading the 
    data retrieved in the Extraction and Transformation steps to a serialized zip
