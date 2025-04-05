@@ -151,13 +151,13 @@ with st.expander('Get Started! ↴'):
 
     # Customizing options buttons
 
-    _, middle_left, middle_right, _ = st.columns([1, 1.5, 1.5, 1])
+    _, center_left, center_right, _ = st.columns([1, 1.5, 1.5, 1])
 
-    with middle_left.container():
+    with center_left.container():
         left_button = st.button('✔',
                                 help='Select',
                                 use_container_width = True)
-    with middle_right.container():
+    with center_right.container():
         right_button = st.button('🟰', help = 'Check out similar movies',
                                  use_container_width = True)
     if len(options_) == 0:
@@ -244,8 +244,8 @@ icons_markdown = f'''
 '''
 
 # Centralizing the connection icons
-_, middle, _ = st.columns([0.5, .5, 0.5])
-with middle.container(border = False):
+_, center, _ = st.columns([0.5, .5, 0.5])
+with center.container(border = False):
     st.markdown(icons_markdown,
                 unsafe_allow_html = True)
     

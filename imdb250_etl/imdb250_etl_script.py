@@ -27,10 +27,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # Extracting data from IMDb Top 250 Movies
 def extract_imdb250_movies() -> pd.DataFrame:        
         '''
-        This functions extracts IMDb Top 250 movie data from the IMDb website
-        using Selenium. The extracted data includes titles, release years, 
-        durations, ratings, plot descriptions, directors, lead stars, 
-        and poster URLs.
+        Extracts IMDb Top 250 movie data from the IMDb website using Selenium. 
+        The extracted data includes titles, release years, durations, ratings,
+        plot descriptions, directors, lead stars, and poster URLs.
         
         Returns:
             pd.DataFrame: a Pandas DataFrame containing the data detailed above.
@@ -199,8 +198,8 @@ def extract_imdb250_movies() -> pd.DataFrame:
 # Getting similarities between IMDb Top 250 Movies 
 def transform_imdb250_movies() -> pd.DataFrame:     
     '''
-   This is a function that proceeds the extraction step, by using the IMDb Top
-   250 movies data to find similarities based on descriptions.
+   Proceeds the extraction step, by using the IMDb Top 250 movies data to find
+   similarities based on descriptions.
 
    Returns:
        pd.DataFrame: a Pandas DataFrame storing the Similarity Matrix of the 
@@ -240,9 +239,8 @@ def transform_imdb250_movies() -> pd.DataFrame:
 # Serializing and loading the transformed data    
 def load_imdb250_movies() -> None:     
     '''
-   This function executes the final stage of the ETL process, by loading the 
-   data retrieved in the Extraction and Transformation steps to a serialized zip
-   instance.
+   Executes the final stage of the ETL process, by loading the data retrieved in the 
+   Extraction and Transformation steps to a serialized zip instance.
    '''
    
     # Extraction and transformation
