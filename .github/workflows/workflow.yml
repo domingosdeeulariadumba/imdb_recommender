@@ -16,6 +16,12 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3 
 
+    # Setting up Google Chrome on the runner (required for Selenium)
+    - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
     # Setting up Python 3.9 on the runner
     - name: Set Up Python 3.9
       uses: actions/setup-python@v4 
