@@ -53,7 +53,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
         service = Service(exe)
         driver = webdriver.Chrome(service = service, options = options_)
         waiting = 5 # seconds
-        wait_driver = WebDriverWait(driver, timeout = waiting * 4, poll_frequency = .3)
+        wait_driver = WebDriverWait(driver, timeout = waiting * 6, poll_frequency = .3)
     
         # Getting to the IMDb 250 movies address page
         url = 'https://www.imdb.com/chart/top/'
