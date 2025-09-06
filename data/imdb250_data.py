@@ -7,7 +7,7 @@ import json
 
 
 # Deserializing the data and passing it as a list of value (dataframes) and key (file name) pairs
-imdb250_data = jbl.load('zipped_data.joblib')
+imdb250_data = jbl.load('data/zipped_data.joblib')
 imdb250_data_items = list(imdb250_data)  
 
 
