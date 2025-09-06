@@ -49,7 +49,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
         options_.add_argument('--disable-blink-features=AutomationControlled')
     
         # Webdriver settings
-        exe = EdgeChromiumDriverManager().install()
+        exe = '/usr/local/bin/msedgedriver'
         service = Service(exec)
         driver = webdriver.Edge(service = service, options = options_)
         waiting = 5 # seconds
