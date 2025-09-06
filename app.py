@@ -1,5 +1,6 @@
 # Dependencies
 import streamlit as st
+from datetime import datetime
 from data.imdb250_data import Imdb250Data
 
 
@@ -81,20 +82,16 @@ imdb_markdown = '''<div class = 'custom-sidebar-button'><a href = 'https://www.i
 
 author_markdown = '''<div class='custom-sidebar-button'><a href = 'https://linktr.ee/domingosdeeulariadumba' target = '_blank'>Visit the Author Main Page 🌐</a></div>'''
 
-st.logo(logo, icon_image = menu_icon,
-        size ='large')
+st.logo(logo, icon_image = menu_icon)
 
 # Injecting styles for buttons
-st.markdown(sidebar_widgets,
-            unsafe_allow_html = True)
+st.markdown(sidebar_widgets, unsafe_allow_html = True)
 
 # Populating the sidebar
 with st.sidebar:
     with st.expander('**Explore! 🚀**'):
-        st.container().markdown(imdb_markdown,
-                                unsafe_allow_html = True)
-        st.container().markdown(author_markdown,
-                                unsafe_allow_html = True)
+        st.container().markdown(imdb_markdown, unsafe_allow_html = True)
+        st.container().markdown(author_markdown, unsafe_allow_html = True)
         st.write('')
 
 # Body of the page
@@ -102,7 +99,8 @@ with st.sidebar:
 with st.expander('Get Started! ↴'):
     # Select box
     options_ = st.multiselect(
-        label = '', options = df_info.title.values,
+        label = '', 
+        options = df_info.title.values,
         placeholder = 'Select a movie here...'
     )
     st.markdown(
@@ -154,16 +152,12 @@ with st.expander('Get Started! ↴'):
     _, center_left, center_right, _ = st.columns([1, 1.5, 1.5, 1])
 
     with center_left.container():
-        left_button = st.button('✔',
-                                help='Select',
-                                use_container_width = True)
+        left_button = st.button('✔', help='Select', use_container_width = True)
     with center_right.container():
-        right_button = st.button('🟰', help = 'Check out similar movies',
-                                 use_container_width = True)
+        right_button = st.button('🟰', help = 'Check out similar movies', use_container_width = True)
     if len(options_) == 0:
         if left_button or right_button:
-            st.success('''**❌ :red[Please, 
-                   Select at Least one Movie!!!]**''')
+            st.success('''**❌ :red[Please, Select at Least one Movie!!!]**''')
     else:
         if left_button:
             st.success('**:green[👌🏿 Have Fun!]**')
@@ -250,8 +244,9 @@ with center.container(border = False):
                 unsafe_allow_html = True)
     
 # Footer stuff
-footer_markdown = '''<div style = 'text-align: center; color: #040404'>
-Developed by <b>Domingos de Eulária Dumba</b>
- © 2025.
-</div>'''
+year = datetime.now().year
+
+footer_markdown = f'''
+<div style = 'text-align: center; color: #040404'>© {year} <b>Domingos de Eulária Dumba</b>.</div>
+'''
 st.markdown(footer_markdown, unsafe_allow_html = True)

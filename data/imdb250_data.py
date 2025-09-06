@@ -1,6 +1,5 @@
 # Dependencies
 import joblib as jbl
-import streamlit as st
 import redis
 import pandas as pd
 import json
@@ -11,8 +10,8 @@ imdb250_data = jbl.load('data/zipped_data.joblib')
 imdb250_data_items = list(imdb250_data)  
 
 
-# Establishing Redis connection
-redis_url = st.secrets['REDIS_URL']
+# Establishing Redis connection (instance from Render)
+redis_url = os.getenv('REDIS_URL')
 r = redis.Redis.from_url(redis_url)
 
 
