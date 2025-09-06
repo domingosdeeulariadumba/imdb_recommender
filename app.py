@@ -15,8 +15,8 @@ st.set_page_config(
 )     
 
 # Getting the IMDb 250 data
-imdb250_data = Imdb250Data()
-df_info = imdb250_data.imdb250_data()
+data = Imdb250Data()
+df_info = data.imdb250_data()
 
 
 # Background color
@@ -174,7 +174,7 @@ with st.expander('Get Started! ↴'):
             st.write('**Movies you may also like**')
             rec_cols = st.columns(5)
             for i, col in enumerate(rec_cols):
-                recommendations = imdb250_data.get_recommendations(options_)
+                recommendations = data.get_recommendations(options_)
                 captions_rec = [
                     f'{row.title}: {row.release_year} • {row.rate}'
                     for row in df_info[df_info.title.isin(recommendations)
