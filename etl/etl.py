@@ -2,9 +2,9 @@
 
 # Data Extraction and Manipulation
 from selenium import webdriver
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from selenium.webdriver.edge.options import Options
-from selenium.webdriver.edge.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -49,7 +49,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
         options_.add_argument('--disable-blink-features=AutomationControlled')
     
         # Webdriver settings
-        exe = '/usr/local/bin/msedgedriver'
+        exe = ChromeDriverManager().install()
         service = Service(exec)
         driver = webdriver.Edge(service = service, options = options_)
         waiting = 5 # seconds
