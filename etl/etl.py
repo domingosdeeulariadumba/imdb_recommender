@@ -53,7 +53,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
         service = Service(exe)
         driver = webdriver.Chrome(service = service, options = options_)
         waiting = 5 # seconds
-        wait_driver = WebDriverWait(driver, timeout = waiting * 6, poll_frequency = .3)
+        wait_driver = WebDriverWait(driver, timeout = waiting * 4, poll_frequency = .3)
     
         # Getting to the IMDb 250 movies address page
         url = 'https://www.imdb.com/chart/top/'
@@ -108,7 +108,8 @@ def extract_imdb250_movies() -> pd.DataFrame:
             
             #### Expanding movies information section (and ensuring it reads the description text) 
             open_button_path = f'''//*[@id="__next"]/main/div/div[3]/section
-                                /div/div[2]/div/ul/li[{i + 1}]/div[3]/button''' 
+                                /div/div[2]/div/ul/li[{i + 1}]/div/div/div/div/div[3]/button''' 
+            
             close_button_path = '/html/body/div[4]/div[2]/div/div[1]/button'
             description_text = ''
             description_path = '/html/body/div[4]/div[2]/div/div[2]/div/div/div[2]'
