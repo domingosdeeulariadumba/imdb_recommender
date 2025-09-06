@@ -37,7 +37,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         python -m nltk.downloader stopwords
-  
+    
+    # Downloading and installing Edge WebDriver
+    - name: Install Edge WebDriver
+      run: |
+        EDGE_VERSION=140.0.3485.54
+        curl -L "https://msedgedriver.microsoft.com/${EDGE_VERSION}/edgedriver_linux64.zip" -o edgedriver.zip
+        unzip edgedriver.zip -d edgedriver
+        sudo mv edgedriver/msedgedriver /usr/local/bin/
+        chmod +x /usr/local/bin/msedgedriver
+
   # Running the ETL process with five attempts in case it fails
     - name: Run ETL Process
       run: |
