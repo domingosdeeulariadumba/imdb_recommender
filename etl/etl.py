@@ -50,7 +50,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
     
         # Webdriver settings
         exe = ChromeDriverManager().install()
-        service = Service(exec)
+        service = Service(exe)
         driver = webdriver.Chrome(service = service, options = options_)
         waiting = 5 # seconds
         wait_driver = WebDriverWait(driver, timeout = waiting * 4, poll_frequency = .3)
