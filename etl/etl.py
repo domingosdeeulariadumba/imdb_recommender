@@ -61,13 +61,13 @@ def extract_imdb250_movies() -> pd.DataFrame:
         
         # Declining cookies preferences
         try:
-            cookie_preferences_decline_button = wait_driver.until(
+            decline_cookie_preferences_button = wait_driver.until(
                 EC.element_to_be_clickable((
                     By.XPATH, 
                     '//*[@id="__next"]/div/div/div[2]/div/button[1]'
                     ))
                     )
-            cookie_preferences_decline_button.click()
+            decline_cookie_preferences_button.click()
         except Exception:
             pass
         time.sleep(waiting * 2)
@@ -88,9 +88,9 @@ def extract_imdb250_movies() -> pd.DataFrame:
         posters = [
             driver.find_element(
                 By.XPATH,
-                  f'//*[@id="__next"]/main/div/div[3]/section/div/div[2]/div/ul/li[{i+1}]/div/div/div/div/div[1]/div/div[1]/img'
-                  ).get_attribute('src') for i in range(250)]
-        
+                f'''//*[@id="__next"]/main/div/div[3]/section/div/div[2]/div
+                /ul/li[{i+1}]/div/div/div/div/div[1]/div/div[1]/img'''
+                ).get_attribute('src') for i in range(250)]    
             
         # Initial scrolling
         driver.execute_script(
@@ -107,8 +107,8 @@ def extract_imdb250_movies() -> pd.DataFrame:
         while i < 250:
             
             #### Expanding movies information section (and ensuring it reads the description text) 
-            open_button_path = f'''//*[@id="__next"]/main/div/div[3]/section
-                                /div/div[2]/div/ul/li[{i + 1}]/div/div/div/div/div[3]/button''' 
+            open_button_path = f'''//*[@id="__next"]/main/div/div[3]/section/div/div[2]
+                                /div/ul/li[{i + 1}]/div/div/div/div/div[3]/button''' 
             
             close_button_path = '/html/body/div[4]/div[2]/div/div[1]/button'
             description_text = ''
