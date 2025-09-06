@@ -88,9 +88,10 @@ def extract_imdb250_movies() -> pd.DataFrame:
         posters = [
             driver.find_element(
                 By.XPATH,
-                  f'//*[@id="__next"]/main/div/div[3]/section/div/div[2]/div/ul/li[{i+1}]/div[1]/div/div[2]/img'
+                  f'//*[@id="__next"]/main/div/div[3]/section/div/div[2]/div/ul/li[{i+1}]/div/div/div/div/div[1]/div/div[1]/img'
                   ).get_attribute('src') for i in range(250)]
-    
+        
+            
         # Initial scrolling
         edge_driver.execute_script(
             'window.scrollTo(0, 410);')
