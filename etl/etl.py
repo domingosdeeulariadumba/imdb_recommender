@@ -93,13 +93,13 @@ def extract_imdb250_movies() -> pd.DataFrame:
         
             
         # Initial scrolling
-        edge_driver.execute_script(
+        driver.execute_script(
             'window.scrollTo(0, 410);')
     
         # Function to perform incremental scrolling (by 18% of the viewport)
         def scroll_page() -> None:
-            scroll_step = edge_driver.execute_script("return window.innerHeight") * .18
-            edge_driver.execute_script(f'window.scrollBy(0, {scroll_step})')
+            scroll_step = driver.execute_script("return window.innerHeight") * .18
+            driver.execute_script(f'window.scrollBy(0, {scroll_step})')
     
         # Fetching stars, descriptions, lead stars and directors data
         plots, directors, lead_stars = [], [], []
