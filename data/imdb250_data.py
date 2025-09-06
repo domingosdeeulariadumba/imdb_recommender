@@ -1,18 +1,18 @@
 # Dependencies
 import joblib as jbl
+import streamlit as st
 import redis
 import pandas as pd
 import json
-import os
 
 
 # Deserializing the data and passing it as a list of value (dataframes) and key (file name) pairs
-imdb250_data = jbl.load('imdb250_data_zipped.joblib')
+imdb250_data = jbl.load('zipped_data.joblib')
 imdb250_data_items = list(imdb250_data)  
 
 
-# Establishing Redis connection (instance from Render)
-redis_url = os.getenv('REDIS_URL')
+# Establishing Redis connection
+redis_url = st.secrets['REDIS_URL']
 r = redis.Redis.from_url(redis_url)
 
 
