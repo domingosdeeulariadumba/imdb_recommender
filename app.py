@@ -88,15 +88,14 @@ with st.expander('Get Started! ↴'):
                     caption_markdown = f'''<p style = 'color:#7c5b05; width: /* customized caption*/
                         130px; font-size: 12px'><strong>{captions_[i]}</strong></p>'''
                     col.markdown(caption_markdown, unsafe_allow_html = True)
-                    if col.button('𝒾', i):
+                    if col.button('𝒾', key = f'close_{i}'):
                         col.success(f':grey[*Plot ➤* _{info[i]}_]')
                         if st.button('×'):
                             st.rerun()
                     else:
                         pass
             else:
-                st.markdown('''We do not allow selecting more
-                            than 5 movies for now! ⛔''')
+                st.markdown('''We do not allow selecting more than 5 movies for now! ⛔''')
         except Exception:
             st.markdown('Seems like there is an error❗❗❗')
 
