@@ -103,19 +103,15 @@ with st.expander('Get Started! ↴'):
 
     # Customizing options buttons
 
-    _, center_left, center_right, _ = st.columns([1, 1.5, 1.5, 1])
+    _, middle, _ = st.columns([1, 1.5, 1])
 
-    with center_left.container():
-        left_button = st.button('✔', help='Select', use_container_width = True)
-    with center_right.container():
-        right_button = st.button('🟰', help = 'Check out similar movies', use_container_width = True)
+    with middle.container():
+        center_button = st.button('🟰', help = 'Check out similar movies', use_container_width = True)
     if len(options_) == 0:
-        if left_button or right_button:
+        if middle_button:
             st.success('''**❌ :red[Please, Select at Least one Movie!!!]**''')
     else:
-        if left_button:
-            st.success('**:green[👌🏿 Have Fun!]**')
-        elif right_button:
+        if middle_button:
             divider_markdown = "<div style = 'width: 100%; height: 3px; background-color:  #f3c404'></div>"
             st.markdown(divider_markdown, unsafe_allow_html=True)
 
@@ -129,8 +125,8 @@ with st.expander('Get Started! ↴'):
                                        ].itertuples()
                 ]
                 covers_rec = df_info[df_info.title.isin(recommendations)
-                                     ].cover.tolist()
-                col.image(covers_rec[i], caption=captions_rec[i], width=130)
+                                     ].poster.tolist()
+                col.image(covers_rec[i], caption = captions_rec[i], width = 130)
             if st.button('×'):
                 st.rerun()
 
