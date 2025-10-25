@@ -106,12 +106,11 @@ with st.expander('Get Started! ↴'):
     _, middle, _ = st.columns([1, 1.5, 1])
 
     with middle.container():
-        center_button = st.button('🟰', help = 'Check out similar movies', use_container_width = True)
-    if len(options_) == 0:
-        if middle_button:
+        middle_button = st.button('🟰', help = 'Check out similar movies', use_container_width = True)
+    if middle_button:
+        if len(options_) == 0:
             st.success('''**❌ :red[Please, Select at Least one Movie!!!]**''')
-    else:
-        if middle_button:
+        else:
             divider_markdown = "<div style = 'width: 100%; height: 3px; background-color:  #f3c404'></div>"
             st.markdown(divider_markdown, unsafe_allow_html=True)
 
@@ -122,10 +121,10 @@ with st.expander('Get Started! ↴'):
                 captions_rec = [
                     f'{row.title}: {row.release_year} • {row.rate}'
                     for row in df_info[df_info.title.isin(recommendations)
-                                       ].itertuples()
+                                    ].itertuples()
                 ]
                 covers_rec = df_info[df_info.title.isin(recommendations)
-                                     ].poster.tolist()
+                                    ].poster.tolist()
                 col.image(covers_rec[i], caption = captions_rec[i], width = 130)
             if st.button('×'):
                 st.rerun()
