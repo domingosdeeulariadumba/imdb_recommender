@@ -123,10 +123,10 @@ with st.expander('Get Started! ↴'):
         f'{row.title} | {row.release_year} • {row.rate}'
         for row in df_info[df_info.title.isin(options_)].itertuples()
     ]
-    covers = df_info[df_info.title.isin(options_)].cover.tolist()
+    posters = df_info[df_info.title.isin(options_)].poster.tolist()
     info = df_info[df_info.title.isin(options_)].plot_.tolist()
 
-    if covers:
+    if posters:
         try:
             if len(options_) <= 5:
                 cols = st.columns(len(options_))
