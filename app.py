@@ -42,59 +42,12 @@ st.image('https://i.postimg.cc/hPS84SwW/body-image-1.png')
 st.image('https://i.postimg.cc/nrx4DZhm/body-image-2.png')
 
 
-# Sidebar configuration
-
-# Sidebar customization (buttons and background)
-sidebar_widgets = '''
-<style>
-.custom-sidebar-button > a {
-    display: inline-block;
-    height: 50px;
-    width: 240px;
-    background-color: #040404; /* dark grey */
-    color: #f3c404; /* flash yellow*/
-    border-radius: 16px;
-    padding: 10px;
-    margin: 3px; /* space between buttons */
-    text-align: center;
-    line-height: 25px;
-    font-style: italic;
-    text-decoration: none; /* removing underline */
-    }
-    .custom-sidebar-button > a:hover {
-    border: 3px solid #040404;
-    background-color: #f3c404;
-    font-weight: bold;
-    color: #f0f2f6; /* white grey*/
-}
-
-[data-testid = 'stSidebar'] {
-    background: linear-gradient(to top, #f3c404,  #f0f2f6); /* Sidebar background gradient */
-}
-</style>
-'''
-
-# Icons and url buttons
+# Sidebar styles
 menu_icon = 'https://i.postimg.cc/5y9MhwyR/5.png'
-
-# Markdown for buttons
-imdb_markdown = '''<div class = 'custom-sidebar-button'><a href = 'https://www.imdb.com/chart/top/' target = '_blank'>The IMDb Top 250 Movies 🎞</a></div>'''
-
-author_markdown = '''<div class='custom-sidebar-button'><a href = 'https://linktr.ee/domingosdeeulariadumba' target = '_blank'>Visit the Author Main Page 🌐</a></div>'''
-
 st.logo(logo, icon_image = menu_icon)
 
-# Injecting styles for buttons
-st.markdown(sidebar_widgets, unsafe_allow_html = True)
 
-# Populating the sidebar
-'''
-with st.sidebar:
-    with st.expander('**Explore! 🚀**'):
-        st.container().markdown(imdb_markdown, unsafe_allow_html = True)
-        st.container().markdown(author_markdown, unsafe_allow_html = True)
-        st.write('')
-'''
+
 # Body of the page
 
 with st.expander('Get Started! ↴'):
