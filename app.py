@@ -96,8 +96,9 @@ with st.expander('Get Started! ↴'):
                         pass
             else:
                 st.markdown('''We do not allow selecting more than 5 movies for now! ⛔''')
-        except Exception:
-            st.markdown('Seems like there is an error❗❗❗')
+        except Exception as e:
+            #st.markdown('Seems like there is an error❗❗❗')
+            st.error(e)
 
 
     # Customizing options buttons
