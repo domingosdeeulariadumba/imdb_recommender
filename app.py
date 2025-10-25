@@ -102,7 +102,7 @@ with st.expander('Get Started! ↴'):
 
     # Customizing options buttons
 
-    _, middle, _ = st.columns([1, 1.5, 1])
+    _, middle, _ = st.columns([1, .8, 1])
 
     with middle.container():
         middle_button = st.button('⚙️', help = 'Check out similar movies', use_container_width = True)
