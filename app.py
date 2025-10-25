@@ -88,12 +88,13 @@ st.logo(logo, icon_image = menu_icon)
 st.markdown(sidebar_widgets, unsafe_allow_html = True)
 
 # Populating the sidebar
+'''
 with st.sidebar:
     with st.expander('**Explore! 🚀**'):
         st.container().markdown(imdb_markdown, unsafe_allow_html = True)
         st.container().markdown(author_markdown, unsafe_allow_html = True)
         st.write('')
-
+'''
 # Body of the page
 
 with st.expander('Get Started! ↴'):
