@@ -88,7 +88,7 @@ with st.expander('Get Started! ↴'):
                     caption_markdown = f'''<p style = 'color:#7c5b05; width: /* customized caption*/
                         130px; font-size: 12px'><strong>{captions_[i]}</strong></p>'''
                     col.markdown(caption_markdown, unsafe_allow_html = True)
-                    if col.button('𝒾' key = f'close_{i}'):
+                    if col.button('𝒾', key = f'close_{i}'):
                         col.success(f':grey[*Plot ➤* _{info[i]}_]')
                         if st.button('×'):
                             st.rerun()
@@ -96,9 +96,8 @@ with st.expander('Get Started! ↴'):
                         pass
             else:
                 st.markdown('''We do not allow selecting more than 5 movies for now! ⛔''')
-        except Exception as e:
-            #st.markdown('Seems like there is an error❗❗❗')
-            st.error(e)
+        except Exception:
+            st.markdown('Seems like there is an error❗❗❗')
 
 
     # Customizing options buttons
@@ -106,7 +105,7 @@ with st.expander('Get Started! ↴'):
     _, middle, _ = st.columns([1, 1.5, 1])
 
     with middle.container():
-        middle_button = st.button('🟰', help = 'Check out similar movies', use_container_width = True)
+        middle_button = st.button('⚙️', help = 'Check out similar movies', use_container_width = True)
     if len(options_) == 0:
         if middle_button:
             st.success('''**❌ :red[Please, Select at Least one Movie!!!]**''')
