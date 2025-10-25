@@ -84,11 +84,11 @@ with st.expander('Get Started! ↴'):
             if len(options_) <= 5:
                 cols = st.columns(len(options_))
                 for i, col in enumerate(cols):
-                    col.image(covers[i], caption = '', width = 130)
+                    col.image(posters[i], caption = '', width = 130)
                     caption_markdown = f'''<p style = 'color:#7c5b05; width: /* customized caption*/
                         130px; font-size: 12px'><strong>{captions_[i]}</strong></p>'''
                     col.markdown(caption_markdown, unsafe_allow_html = True)
-                    if col.button('𝒾', key = f'close_{i}'):
+                    if col.button('𝒾' key = f'close_{i}'):
                         col.success(f':grey[*Plot ➤* _{info[i]}_]')
                         if st.button('×'):
                             st.rerun()
