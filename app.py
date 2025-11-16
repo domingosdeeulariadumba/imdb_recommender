@@ -105,7 +105,7 @@ with st.expander('Get Started! ↴'):
     _, middle, _ = st.columns([1, .8, 1])
 
     with middle.container():
-        middle_button = st.button('⚙️', help = 'Check out similar movies', use_container_width = True)
+        middle_button = st.button('⚙️', help = 'Check out similar movies')
     if len(options_) == 0:
         if middle_button:
             st.success('''**❌ :red[Please, Select at Least one Movie!!!]**''')
