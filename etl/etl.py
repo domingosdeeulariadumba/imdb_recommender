@@ -37,7 +37,7 @@ def extract_imdb250_movies() -> pd.DataFrame:
         # Navigation details setup
         options_ = Options()
         options_.add_argument('--headless')    
-        options_.add_argument('user-agent=MyCustomUserAgent')
+        options_.add_argument('user-agent=IMDb-Top250-Scraper/1.0 (+https://github.com/domingosdeeulariadumba/imdb_recommender)')
         options_.add_argument('--start-maximized')
         options_.add_argument('--disable-gpu')
         options_.add_argument('--no-sandbox') 
