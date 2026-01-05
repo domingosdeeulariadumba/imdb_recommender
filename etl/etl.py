@@ -61,12 +61,9 @@ def extract_imdb250_movies() -> pd.DataFrame:
         
         # Declining cookies preferences
         try:
-            decline_cookie_preferences_button = wait_driver.until(
-                EC.element_to_be_clickable((
-                    By.XPATH, 
-                    '//*[@id="__next"]/div/div/div[2]/div/button[1]'
-                    ))
-                    )
+            decline_cookie_preferences_path = '//*[@id="__next"]/div/div/div[2]/div/button[1]'
+            decline_cookie_preferences_element = By.XPATH, decline_cookie_preferences_path
+            decline_cookie_preferences_button = wait_driver.until(EC.element_to_be_clickable(decline_cookie_preferences_element))
             decline_cookie_preferences_button.click()
         except Exception:
             pass
