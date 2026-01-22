@@ -219,28 +219,30 @@ def transform_imdb250_movies() -> pd.DataFrame:
     
     # Instantiation of TF-IDF Vectorixer
     tf_idf_vectorizer = TfidfVectorizer(min_df = .035, max_df = .8)
-    vectorized_terms = tf_idf_vectorizer.fit_transform(imdb250_df.plot_)
-    terms = tf_idf_vectorizer.get_feature_names_out()
+    tf_idf_data = tf_idf_vectorizer.fit_transform(imdb250_df.plot_).toarray()
+    features = tf_idf_vectorizer.get_feature_names_out()
     
     # Removing stopwords
     stopwords_en = stopwords.words('english')
-    relevant_terms = pd.Series(terms)[~(pd.Series(terms).isin(stopwords_en))].values
+    mask = ~pd.Series(features).isin(stopwords_en)
+    relevant_features = features[mask]
     
     # Dataframe with vectorized terms for each movie
     vect_terms_df = pd.DataFrame(
-        vectorized_terms.toarray(),
-        columns = terms, 
+        tf_idf_data,
+        columns = features, 
         index = imdb250_df.title
-                 ).loc[:, relevant_terms]
+                 ).loc[:, relevant_features]
     
     # Getting the dataframe with cosine distances
     terms_matrix = (1 - squareform(
         pdist(vect_terms_df, metric = 'cosine')
         ))
-    similarities_df = pd.DataFrame(terms_matrix,
-                                   index = imdb250_df.title,
-                                  columns = imdb250_df.title
-                                  ).fillna(0).round(2)
+    similarities_df = pd.DataFrame(
+        terms_matrix, 
+        index = imdb250_df.title,
+        columns = imdb250_df.title
+        ).fillna(0).round(2)
     return similarities_df   
 
     
